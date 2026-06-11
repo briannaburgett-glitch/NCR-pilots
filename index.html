@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NCR Pilots Dashboard</title>
+<title>NCR Pilots & Onboarding Dashboard</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
 <style>
 :root{--bg:#fff;--bg2:#f8f8f6;--bg3:#f1f0eb;--text:#1a1a18;--text2:#5f5e5a;--text3:#9a9890;--border:rgba(0,0,0,0.1);--border2:rgba(0,0,0,0.18);--blue-bg:#E6F1FB;--blue-text:#0C447C;--blue-mid:#378ADD;--green-bg:#E1F5EE;--green-text:#085041;--green-mid:#1D9E75;--amber-bg:#FAEEDA;--amber-text:#633806;--amber-mid:#BA7517;--red-bg:#FCEBEB;--red-text:#A32D2D;--red-border:#F7C1C1;--yellow-bg:#FAEEDA;--yellow-text:#633806;--yellow-border:#FAC775;--r:8px;--rl:12px}
 @media(prefers-color-scheme:dark){:root{--bg:#1c1c1a;--bg2:#242422;--bg3:#2c2c2a;--text:#f0ede8;--text2:#b4b2a9;--text3:#666460;--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);--blue-bg:#0c2f50;--blue-text:#85B7EB;--green-bg:#053528;--green-text:#5DCAA5;--amber-bg:#3a2205;--amber-text:#EF9F27;--red-bg:#3a1010;--red-text:#F09595;--red-border:#A32D2D;--yellow-bg:#3a2205;--yellow-text:#EF9F27;--yellow-border:#854F0B}}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
-.wrap{max-width:900px;margin:0 auto;padding:1.5rem 1rem 3rem}
+.wrap{max-width:960px;margin:0 auto;padding:1.5rem 1rem 3rem}
 .dash-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:12px}
 .dash-title{font-size:20px;font-weight:500}
 .dash-sub{font-size:12px;color:var(--text2);margin-top:3px}
@@ -23,7 +23,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .tab-btn:hover:not(.active){color:var(--text)}
 .tab-pane{display:none}.tab-pane.active{display:block}
 
-/* Overview cards */
+/* Overview */
 .ov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media(max-width:600px){.ov-grid{grid-template-columns:1fr}}
 .ov-card{border:.5px solid var(--border);border-radius:var(--rl);padding:1rem;cursor:pointer;transition:border-color .15s}
@@ -36,23 +36,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .ov-arr.amber{background:var(--amber-bg);color:var(--amber-text)}
 .ov-field{font-size:12px;color:var(--text2);margin-top:5px}
 .ov-field span{color:var(--text);font-weight:500}
-.net-pill{display:inline-block;background:var(--bg2);border:.5px solid var(--border2);border-radius:var(--r);font-size:11px;padding:1px 7px;margin:1px 2px 0 0}
 
 /* Editable field */
 .ef{display:flex;align-items:flex-start;gap:6px;padding:6px 0;border-bottom:.5px solid var(--border)}
 .ef:last-child{border-bottom:none}
-.ef-label{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.04em;min-width:130px;padding-top:3px;flex-shrink:0}
+.ef-label{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:.04em;min-width:140px;padding-top:3px;flex-shrink:0}
 .ef-val{font-size:13px;color:var(--text);flex:1;cursor:text;min-height:20px;border-radius:4px;padding:1px 4px}
 .ef-val:hover{background:var(--bg2)}
 .ef-val[contenteditable=true]:focus{background:var(--bg2);outline:.5px solid var(--border2);outline-offset:1px}
 
-/* Sections */
+/* Section */
 .section{margin-bottom:1.25rem}
 .section-title{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--text2);margin-bottom:8px;display:flex;align-items:center;gap:6px}
 .add-btn{margin-left:auto;font-size:11px;padding:2px 8px;border:.5px solid var(--border2);border-radius:var(--r);background:transparent;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:3px}
 .add-btn:hover{background:var(--bg2);color:var(--text)}
 
-/* Phases / blocks */
+/* Phase blocks */
 .phase-block{background:var(--bg2);border-radius:var(--r);padding:9px 12px;margin-bottom:6px;display:flex;align-items:flex-start;gap:8px}
 .phase-block.red{background:var(--red-bg);border:.5px solid var(--red-border)}
 .phase-block.yellow{background:var(--yellow-bg);border:.5px solid var(--yellow-border)}
@@ -64,7 +63,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .phase-val-el{font-size:13px;cursor:text;min-height:18px}
 .phase-val-el[contenteditable]:focus{outline:.5px solid var(--border2);border-radius:3px;padding:0 2px}
 .del-btn{background:none;border:none;color:var(--text3);cursor:pointer;font-size:14px;padding:2px;border-radius:3px;flex-shrink:0;opacity:0;transition:opacity .15s}
-.phase-block:hover .del-btn{opacity:1}
+.phase-block:hover .del-btn,.link-item:hover .del-btn,.checklist li:hover .del-btn,.stag:hover .del-btn{opacity:1}
 
 /* Checklist */
 .checklist{list-style:none}
@@ -75,14 +74,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .checklist li label[contenteditable]:focus{outline:.5px solid var(--border2);border-radius:3px;padding:0 2px}
 .checklist li.done label{text-decoration:line-through;color:var(--text3)}
 .checklist li .del-btn{opacity:0}
-.checklist li:hover .del-btn{opacity:1}
 
 /* Success tags */
 .stags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
 .stag{display:inline-flex;align-items:center;gap:4px;background:#EAF3DE;color:#3B6D11;font-size:11px;padding:2px 8px;border-radius:var(--r)}
 @media(prefers-color-scheme:dark){.stag{background:#173404;color:#97C459}}
 .stag .del-btn{opacity:0;font-size:12px;color:#3B6D11}
-.stag:hover .del-btn{opacity:1}
 
 /* Link list */
 .link-list{display:flex;flex-direction:column;gap:6px}
@@ -92,7 +89,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .link-item a{font-size:13px;color:var(--blue-text);cursor:text;word-break:break-all}
 .link-item a[contenteditable]:focus{outline:.5px solid var(--border2);border-radius:3px}
 .link-item .del-btn{opacity:0}
-.link-item:hover .del-btn{opacity:1}
 
 /* Calendar */
 .cal-legend{display:flex;gap:12px;margin-bottom:1rem;flex-wrap:wrap}
@@ -117,27 +113,78 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .popup{background:var(--bg);border-radius:var(--rl);padding:1.25rem;max-width:360px;width:92%;border:.5px solid var(--border2);position:relative;max-height:88vh;overflow-y:auto}
 .popup-close{position:absolute;top:10px;right:12px;background:none;border:none;font-size:18px;cursor:pointer;color:var(--text2)}
 .popup-title{font-size:15px;font-weight:500;margin-bottom:12px;padding-right:24px}
-.popup-goto{margin-top:12px}
-.popup-goto button{font-size:12px;padding:5px 12px;cursor:pointer;background:var(--bg2);border:.5px solid var(--border2);border-radius:var(--r);color:var(--text)}
+.popup-goto button{font-size:12px;padding:5px 12px;cursor:pointer;background:var(--bg2);border:.5px solid var(--border2);border-radius:var(--r);color:var(--text);margin-top:12px}
 
 /* Callout */
 .callout{background:var(--green-bg);border:.5px solid #9FE1CB;border-radius:var(--r);padding:8px 12px;font-size:12px;color:var(--green-text);margin-bottom:1rem;display:flex;gap:8px;align-items:flex-start}
 
-/* Save indicator */
+/* Save dot */
 .save-dot{width:7px;height:7px;border-radius:50%;background:#9FE1CB;display:inline-block;margin-left:8px;opacity:0;transition:opacity .3s}
 .save-dot.show{opacity:1}
+
+/* ── OSW Timeline ────────────────────────────────────────────────────── */
+.timeline-wrap{position:relative;padding:0 0 1rem}
+.tl-rail{position:relative;display:flex;align-items:flex-start;gap:0;overflow-x:auto;padding-bottom:8px}
+
+/* rail line drawn via pseudo on a wrapper */
+.tl-rail-line{position:relative}
+.tl-rail-line::before{content:'';position:absolute;top:16px;left:0;right:0;height:2px;background:var(--green-mid);z-index:0}
+
+.tl-col{display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
+
+/* Phase box */
+.tl-phase{min-width:180px;max-width:210px;background:var(--bg);border:.5px solid var(--green-mid);border-radius:var(--rl);padding:10px 12px;margin-top:28px;position:relative;flex-shrink:0}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--green-mid);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--green-mid);flex-shrink:0;margin-bottom:0}
+.tl-phase-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--green-text);margin-bottom:6px}
+.tl-field{margin-bottom:6px}
+.tl-field-label{font-size:9px;text-transform:uppercase;letter-spacing:.04em;color:var(--text3);margin-bottom:2px}
+.tl-field-val{font-size:12px;color:var(--text);cursor:text;min-height:16px;border-radius:3px;padding:1px 3px}
+.tl-field-val:hover{background:var(--bg2)}
+.tl-field-val[contenteditable]:focus{background:var(--bg2);outline:.5px solid var(--green-mid)}
+
+/* Diamond SL update marker */
+.tl-diamond-wrap{display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;flex-shrink:0}
+.tl-diamond{width:14px;height:14px;background:var(--green-text);transform:rotate(45deg);margin-top:9px;cursor:pointer;border-radius:1px}
+.tl-diamond-label{font-size:9px;color:var(--green-text);margin-top:10px;white-space:nowrap;writing-mode:horizontal-tb;text-align:center;max-width:60px;line-height:1.2}
+.tl-diamond-label[contenteditable]:focus{outline:.5px solid var(--green-mid);border-radius:2px}
+
+/* Transition gate */
+.tl-gate-wrap{display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;flex-shrink:0;min-width:120px}
+.tl-gate-icon{font-size:16px;color:var(--amber-text);background:var(--amber-bg);border:.5px solid var(--yellow-border);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;margin-top:3px;flex-shrink:0}
+.tl-gate-box{background:var(--amber-bg);border:.5px solid var(--yellow-border);border-radius:var(--r);padding:8px 10px;margin-top:20px;min-width:120px;max-width:150px}
+.tl-gate-title{font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;color:var(--amber-text);margin-bottom:6px}
+.tl-gate-cl{list-style:none}
+.tl-gate-cl li{display:flex;flex-direction:column;padding:3px 0;border-bottom:.5px solid var(--yellow-border);font-size:11px}
+.tl-gate-cl li:last-child{border-bottom:none}
+.tl-gate-cl li .gate-row{display:flex;align-items:flex-start;gap:5px}
+.tl-gate-cl li input[type=checkbox]{margin-top:2px;flex-shrink:0;accent-color:var(--amber-mid);width:12px;height:12px}
+.tl-gate-cl li .gate-text{cursor:text;flex:1;color:var(--amber-text)}
+.tl-gate-cl li .gate-text[contenteditable]:focus{outline:.5px solid var(--amber-mid);border-radius:2px}
+.tl-gate-cl li .gate-poc{font-size:10px;color:var(--text3);margin-left:17px;cursor:text;min-height:14px}
+.tl-gate-cl li .gate-poc[contenteditable]:focus{outline:.5px solid var(--border2);border-radius:2px}
+.tl-gate-cl li .del-btn{opacity:0;font-size:12px}
+.tl-gate-cl li:hover .del-btn{opacity:1}
+.tl-gate-add{font-size:10px;color:var(--amber-text);background:none;border:none;cursor:pointer;margin-top:4px;padding:2px 0;display:flex;align-items:center;gap:3px}
+.tl-gate-add:hover{text-decoration:underline}
+
+/* Pre-phase checklist tabs */
+.phase-cl-tabs{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.phase-cl-tab{padding:4px 12px;font-size:12px;border:.5px solid var(--border2);border-radius:var(--r);background:transparent;color:var(--text2);cursor:pointer}
+.phase-cl-tab.active{background:var(--green-bg);color:var(--green-text);border-color:var(--green-mid)}
+.phase-cl-pane{display:none}.phase-cl-pane.active{display:block}
 </style>
 </head>
 <body>
 <div class="wrap">
+
 <div class="dash-header">
   <div>
-    <div class="dash-title">NCR Pilot Dashboard <span class="save-dot" id="savedot"></span></div>
+    <div class="dash-title">NCR Pilots &amp; Onboarding Dashboard <span class="save-dot" id="savedot"></span></div>
     <div class="dash-sub">OPNAV N9I · OSW IBP · DTRA J3/5/8 — FY26</div>
   </div>
   <div class="total-arr">
     <div class="total-arr-label">Total ARR target</div>
-    <div class="total-arr-value" id="total-arr-display">$TBD</div>
+    <div class="total-arr-value">$TBD</div>
   </div>
 </div>
 
@@ -153,31 +200,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <div id="tab-overview" class="tab-pane active">
   <div class="ov-grid">
     <div class="ov-card" onclick="switchTab('opnav')">
-      <div class="ov-card-top">
-        <div class="ov-name"><i class="ti ti-anchor" style="margin-right:5px"></i>OPNAV N9I</div>
-        <div class="ov-arr blue" id="ov-arr-opnav">$TBD</div>
-      </div>
+      <div class="ov-card-top"><div class="ov-name"><i class="ti ti-anchor" style="margin-right:5px"></i>OPNAV N9I</div><div class="ov-arr blue" id="ov-arr-opnav">$TBD</div></div>
       <div class="ov-field">Dates: <span id="ov-dates-opnav">18 May – 12 Jun 2025</span></div>
       <div class="ov-field">Networks: <span id="ov-net-opnav">IL6</span></div>
     </div>
     <div class="ov-card" onclick="switchTab('osw')">
-      <div class="ov-card-top">
-        <div class="ov-name"><i class="ti ti-briefcase" style="margin-right:5px"></i>OSW IBP</div>
-        <div class="ov-arr green" id="ov-arr-osw">$1.2M</div>
-      </div>
+      <div class="ov-card-top"><div class="ov-name"><i class="ti ti-briefcase" style="margin-right:5px"></i>OSW IBP</div><div class="ov-arr green" id="ov-arr-osw">$1.2M</div></div>
       <div class="ov-field">Dates: <span id="ov-dates-osw">1 Jul 2025 · 3 phases</span></div>
       <div class="ov-field">Networks: <span id="ov-net-osw">IL5 · AI Assist</span></div>
     </div>
     <div class="ov-card" onclick="switchTab('dtra')">
-      <div class="ov-card-top">
-        <div class="ov-name"><i class="ti ti-shield" style="margin-right:5px"></i>DTRA J3/5/8</div>
-        <div class="ov-arr amber" id="ov-arr-dtra">$TBD</div>
-      </div>
+      <div class="ov-card-top"><div class="ov-name"><i class="ti ti-shield" style="margin-right:5px"></i>DTRA J3/5/8</div><div class="ov-arr amber" id="ov-arr-dtra">$TBD</div></div>
       <div class="ov-field">Dates: <span id="ov-dates-dtra">1 Aug – 31 Oct 2025</span></div>
       <div class="ov-field">Networks: <span id="ov-net-dtra">IL5 · IL6 · JWICS</span></div>
     </div>
   </div>
-  <p style="font-size:11px;color:var(--text3);margin-top:12px">Click any card to view and edit full pilot details.</p>
+  <p style="font-size:11px;color:var(--text3);margin-top:12px">Click any card to view and edit full details.</p>
 </div>
 
 <!-- CALENDAR -->
@@ -191,16 +229,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <p style="font-size:11px;color:var(--text3);margin-top:8px">Click any highlighted day to see pilot details.</p>
 </div>
 
-<!-- OPNAV DETAIL -->
+<!-- OPNAV -->
 <div id="tab-opnav" class="tab-pane">
   <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px">
-    <div>
-      <div style="font-size:18px;font-weight:500"><i class="ti ti-anchor" style="margin-right:6px"></i>OPNAV N9I</div>
-      <div style="font-size:12px;color:var(--text2)" id="d-dates-opnav-display"></div>
-    </div>
+    <div><div style="font-size:18px;font-weight:500"><i class="ti ti-anchor" style="margin-right:6px"></i>OPNAV N9I</div><div style="font-size:12px;color:var(--text2)" id="d-dates-opnav-display"></div></div>
     <div class="ov-arr blue" id="d-arr-opnav-display" style="font-size:20px"></div>
   </div>
-
   <div class="section">
     <div class="section-title"><i class="ti ti-info-circle"></i> Core info</div>
     <div class="ef"><div class="ef-label">ARR</div><div class="ef-val" contenteditable="true" data-key="opnav.arr" data-sync="ov-arr-opnav,d-arr-opnav-display"></div></div>
@@ -212,8 +246,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="ef"><div class="ef-label">CR lead</div><div class="ef-val" contenteditable="true" data-key="opnav.crlead"></div></div>
     <div class="ef"><div class="ef-label">CR support</div><div class="ef-val" contenteditable="true" data-key="opnav.crsupport"></div></div>
     <div class="ef"><div class="ef-label">Expansion target</div><div class="ef-val" contenteditable="true" data-key="opnav.expansion"></div></div>
+    <div class="ef"><div class="ef-label">Contracting notes</div><div class="ef-val" contenteditable="true" data-key="opnav.contracting"></div></div>
   </div>
-
   <div class="section">
     <div class="section-title"><i class="ti ti-list-check"></i> Workflows &amp; success criteria
       <button class="add-btn" onclick="addSuccess('opnav')"><i class="ti ti-plus"></i> Add</button>
@@ -221,28 +255,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="ef"><div class="ef-label">Confirmed workflows</div><div class="ef-val" contenteditable="true" data-key="opnav.workflows"></div></div>
     <div class="stags" id="opnav-success"></div>
   </div>
-
-  <div class="section">
-    <div class="section-title"><i class="ti ti-clipboard-check"></i> Pre-pilot checklist
-      <button class="add-btn" onclick="addCheck('opnav')"><i class="ti ti-plus"></i> Add item</button>
-    </div>
-    <ul class="checklist" id="opnav-cl"></ul>
-  </div>
-
-  <div class="section">
-    <div class="section-title"><i class="ti ti-refresh"></i> Check-in cadence
-      <button class="add-btn" onclick="addBlock('opnav-checkins','','')"><i class="ti ti-plus"></i> Add</button>
-    </div>
-    <div id="opnav-checkins"></div>
-  </div>
-
   <div class="section">
     <div class="section-title"><i class="ti ti-alert-triangle"></i> Risks
       <button class="add-btn" onclick="addBlock('opnav-risks','New risk','Describe mitigation here','red')"><i class="ti ti-plus"></i> Add</button>
     </div>
     <div id="opnav-risks"></div>
   </div>
-
   <div class="section">
     <div class="section-title"><i class="ti ti-link"></i> Resources &amp; docs
       <button class="add-btn" onclick="addLink('opnav-links')"><i class="ti ti-plus"></i> Add link</button>
@@ -251,56 +269,49 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 </div>
 
-<!-- OSW IBP DETAIL -->
+<!-- OSW IBP -->
 <div id="tab-osw" class="tab-pane">
   <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:8px">
-    <div>
-      <div style="font-size:18px;font-weight:500"><i class="ti ti-briefcase" style="margin-right:6px"></i>OSW IBP</div>
-      <div style="font-size:12px;color:var(--text2)" id="d-dates-osw-display"></div>
-    </div>
+    <div><div style="font-size:18px;font-weight:500"><i class="ti ti-briefcase" style="margin-right:6px"></i>OSW IBP</div><div style="font-size:12px;color:var(--text2)" id="d-dates-osw-display"></div></div>
     <div class="ov-arr green" id="d-arr-osw-display" style="font-size:20px"></div>
   </div>
   <div class="callout"><i class="ti ti-topology-star-3"></i><span>Feeds broader OSW-wide goal. Related efforts: SecWar Front Office · P&amp;R re-engagement.</span></div>
-
   <div class="section">
     <div class="section-title"><i class="ti ti-info-circle"></i> Core info</div>
     <div class="ef"><div class="ef-label">ARR (FY27 target)</div><div class="ef-val" contenteditable="true" data-key="osw.arr" data-sync="ov-arr-osw,d-arr-osw-display"></div></div>
     <div class="ef"><div class="ef-label">Dates</div><div class="ef-val" contenteditable="true" data-key="osw.dates" data-sync="ov-dates-osw,d-dates-osw-display"></div></div>
     <div class="ef"><div class="ef-label">Networks</div><div class="ef-val" contenteditable="true" data-key="osw.networks" data-sync="ov-net-osw"></div></div>
-    <div class="ef"><div class="ef-label">Gov lead(s)</div><div class="ef-val" contenteditable="true" data-key="osw.govlead"></div></div>
-    <div class="ef"><div class="ef-label">Decision makers</div><div class="ef-val" contenteditable="true" data-key="osw.dm"></div></div>
     <div class="ef"><div class="ef-label">Contracting / Sales</div><div class="ef-val" contenteditable="true" data-key="osw.sales"></div></div>
     <div class="ef"><div class="ef-label">CR lead</div><div class="ef-val" contenteditable="true" data-key="osw.crlead"></div></div>
     <div class="ef"><div class="ef-label">CR support</div><div class="ef-val" contenteditable="true" data-key="osw.crsupport"></div></div>
     <div class="ef"><div class="ef-label">Expansion target</div><div class="ef-val" contenteditable="true" data-key="osw.expansion"></div></div>
+    <div class="ef"><div class="ef-label">Contracting notes</div><div class="ef-val" contenteditable="true" data-key="osw.contracting"></div></div>
   </div>
 
+  <!-- TIMELINE -->
   <div class="section">
-    <div class="section-title"><i class="ti ti-list-tree"></i> Phase breakdown
-      <button class="add-btn" onclick="addBlock('osw-phases','Phase','Description')"><i class="ti ti-plus"></i> Add phase</button>
+    <div class="section-title"><i class="ti ti-timeline"></i> Phase timeline</div>
+    <div class="timeline-wrap">
+      <div class="tl-rail-line">
+        <div class="tl-rail" id="osw-tl-rail"></div>
+      </div>
     </div>
-    <div id="osw-phases"></div>
+    <p style="font-size:11px;color:var(--text3);margin-top:4px">All fields editable inline. Hover blocks for delete. ◆ = senior leader update.</p>
   </div>
 
+  <!-- PRE-PHASE CHECKLISTS -->
   <div class="section">
-    <div class="section-title"><i class="ti ti-trophy"></i> Success criteria
-      <button class="add-btn" onclick="addSuccess('osw')"><i class="ti ti-plus"></i> Add</button>
+    <div class="section-title"><i class="ti ti-clipboard-check"></i> Pre-phase checklists
+      <button class="add-btn" onclick="addOswCheck()"><i class="ti ti-plus"></i> Add item</button>
     </div>
-    <div class="stags" id="osw-success"></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title"><i class="ti ti-clipboard-check"></i> Pre-pilot checklist
-      <button class="add-btn" onclick="addCheck('osw')"><i class="ti ti-plus"></i> Add item</button>
+    <div class="phase-cl-tabs">
+      <button class="phase-cl-tab active" onclick="showPhaseTab(1)">Phase 1</button>
+      <button class="phase-cl-tab" onclick="showPhaseTab(2)">Phase 2</button>
+      <button class="phase-cl-tab" onclick="showPhaseTab(3)">Phase 3</button>
     </div>
-    <ul class="checklist" id="osw-cl"></ul>
-  </div>
-
-  <div class="section">
-    <div class="section-title"><i class="ti ti-refresh"></i> Check-in cadence
-      <button class="add-btn" onclick="addBlock('osw-checkins','','')"><i class="ti ti-plus"></i> Add</button>
-    </div>
-    <div id="osw-checkins"></div>
+    <div id="osw-ph1-pane" class="phase-cl-pane active"><ul class="checklist" id="osw-cl-1"></ul></div>
+    <div id="osw-ph2-pane" class="phase-cl-pane"><ul class="checklist" id="osw-cl-2"></ul></div>
+    <div id="osw-ph3-pane" class="phase-cl-pane"><ul class="checklist" id="osw-cl-3"></ul></div>
   </div>
 
   <div class="section">
@@ -309,14 +320,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
     <div id="osw-risks"></div>
   </div>
-
   <div class="section">
     <div class="section-title"><i class="ti ti-circles-relation"></i> Related OSW efforts
       <button class="add-btn" onclick="addBlock('osw-related','Effort','Status')"><i class="ti ti-plus"></i> Add</button>
     </div>
     <div id="osw-related"></div>
   </div>
-
   <div class="section">
     <div class="section-title"><i class="ti ti-link"></i> Resources &amp; docs
       <button class="add-btn" onclick="addLink('osw-links')"><i class="ti ti-plus"></i> Add link</button>
@@ -325,29 +334,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 </div>
 
-<!-- DTRA DETAIL -->
+<!-- DTRA -->
 <div id="tab-dtra" class="tab-pane">
   <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px">
-    <div>
-      <div style="font-size:18px;font-weight:500"><i class="ti ti-shield" style="margin-right:6px"></i>DTRA J3/5/8</div>
-      <div style="font-size:12px;color:var(--text2)" id="d-dates-dtra-display"></div>
-    </div>
+    <div><div style="font-size:18px;font-weight:500"><i class="ti ti-shield" style="margin-right:6px"></i>DTRA J3/5/8</div><div style="font-size:12px;color:var(--text2)" id="d-dates-dtra-display"></div></div>
     <div class="ov-arr amber" id="d-arr-dtra-display" style="font-size:20px"></div>
   </div>
-
   <div class="section">
     <div class="section-title"><i class="ti ti-info-circle"></i> Core info</div>
     <div class="ef"><div class="ef-label">ARR</div><div class="ef-val" contenteditable="true" data-key="dtra.arr" data-sync="ov-arr-dtra,d-arr-dtra-display"></div></div>
     <div class="ef"><div class="ef-label">Dates</div><div class="ef-val" contenteditable="true" data-key="dtra.dates" data-sync="ov-dates-dtra,d-dates-dtra-display"></div></div>
     <div class="ef"><div class="ef-label">Networks</div><div class="ef-val" contenteditable="true" data-key="dtra.networks" data-sync="ov-net-dtra"></div></div>
     <div class="ef"><div class="ef-label">Gov lead(s)</div><div class="ef-val" contenteditable="true" data-key="dtra.govlead"></div></div>
-    <div class="ef"><div class="ef-label">Decision makers</div><div class="ef-val" contenteditable="true" data-key="dtra.dm"></div></div>
+    <div class="ef"><div class="ef-label">Decision makers</div><div class="ef-label-label">Decision makers</div><div class="ef-val" contenteditable="true" data-key="dtra.dm"></div></div>
     <div class="ef"><div class="ef-label">Contracting / Sales</div><div class="ef-val" contenteditable="true" data-key="dtra.sales"></div></div>
     <div class="ef"><div class="ef-label">CR lead</div><div class="ef-val" contenteditable="true" data-key="dtra.crlead"></div></div>
     <div class="ef"><div class="ef-label">CR support</div><div class="ef-val" contenteditable="true" data-key="dtra.crsupport"></div></div>
     <div class="ef"><div class="ef-label">Expansion target</div><div class="ef-val" contenteditable="true" data-key="dtra.expansion"></div></div>
+    <div class="ef"><div class="ef-label">Contracting notes</div><div class="ef-val" contenteditable="true" data-key="dtra.contracting"></div></div>
   </div>
-
   <div class="section">
     <div class="section-title"><i class="ti ti-list-check"></i> Workflows &amp; success criteria
       <button class="add-btn" onclick="addSuccess('dtra')"><i class="ti ti-plus"></i> Add</button>
@@ -355,28 +360,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div class="ef"><div class="ef-label">Confirmed workflows</div><div class="ef-val" contenteditable="true" data-key="dtra.workflows"></div></div>
     <div class="stags" id="dtra-success"></div>
   </div>
-
   <div class="section">
-    <div class="section-title"><i class="ti ti-clipboard-check"></i> Pre-pilot checklist
+    <div class="section-title"><i class="ti ti-clipboard-check"></i> Pre-onboarding checklist
       <button class="add-btn" onclick="addCheck('dtra')"><i class="ti ti-plus"></i> Add item</button>
     </div>
     <ul class="checklist" id="dtra-cl"></ul>
   </div>
-
-  <div class="section">
-    <div class="section-title"><i class="ti ti-refresh"></i> Check-in cadence
-      <button class="add-btn" onclick="addBlock('dtra-checkins','','')"><i class="ti ti-plus"></i> Add</button>
-    </div>
-    <div id="dtra-checkins"></div>
-  </div>
-
   <div class="section">
     <div class="section-title"><i class="ti ti-alert-triangle"></i> Risks
       <button class="add-btn" onclick="addBlock('dtra-risks','New risk','Describe mitigation here','red')"><i class="ti ti-plus"></i> Add</button>
     </div>
     <div id="dtra-risks"></div>
   </div>
-
   <div class="section">
     <div class="section-title"><i class="ti ti-link"></i> Resources &amp; docs
       <button class="add-btn" onclick="addLink('dtra-links')"><i class="ti ti-plus"></i> Add link</button>
@@ -387,7 +382,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 
 </div><!-- /wrap -->
 
-<!-- POPUP -->
 <div class="pop-ov" id="pop-ov" onclick="if(event.target.id==='pop-ov')closePop()">
   <div class="popup">
     <button class="popup-close" onclick="closePop()"><i class="ti ti-x"></i></button>
@@ -398,45 +392,39 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </div>
 
 <script>
-// ── State ──────────────────────────────────────────────────────────────────
-var DEFAULTS = {
+// ── Defaults ───────────────────────────────────────────────────────────────
+var DEFAULTS={
   'opnav.arr':'$TBD','opnav.dates':'18 May – 12 Jun 2025','opnav.networks':'IL6',
   'opnav.govlead':'NOC / N33','opnav.dm':'N9 (champion + funding) · N3 (positive support) · APHIT (potential)',
   'opnav.sales':'Will W · Chris T','opnav.crlead':'Will W · Chris T','opnav.crsupport':'Phil · Brandon',
-  'opnav.expansion':'N9 primary · N3 · APHIT · Navy-wide FY27','opnav.workflows':'NpI and X · NOC / N33',
+  'opnav.expansion':'N9 primary · N3 · APHIT · Navy-wide FY27','opnav.workflows':'NpI and X · NOC / N33','opnav.contracting':'',
   'osw.arr':'$1.2M','osw.dates':'1 Jul 2025 · 3 phases contracted','osw.networks':'IL5 · AI Assist',
-  'osw.govlead':'TBD per phase','osw.dm':'Phase 3 IBP leadership (currently resistant)',
   'osw.sales':'Will W','osw.crlead':'Phil','osw.crsupport':'GDT – Scott',
-  'osw.expansion':'Full IBP FY27 ($1.2M) · OSW-wide','osw.workflows':'Ph1: Industry Affairs · Ph2: Mismatch lead · Ph3: Industrial Base Policy + Front Office',
+  'osw.expansion':'Full IBP FY27 ($1.2M) · OSW-wide','osw.contracting':'',
   'dtra.arr':'$TBD','dtra.dates':'1 Aug – 31 Oct 2025','dtra.networks':'IL5 · IL6 · JWICS · AI Assist',
   'dtra.govlead':'TBD','dtra.dm':'TBD','dtra.sales':'Will W',
   'dtra.crlead':'Sam Sok (potential, JS team)','dtra.crsupport':'Greg Nolan (GDT, joining July)',
-  'dtra.expansion':'6-month CLIN → full DTRA mid-year','dtra.workflows':'OPORDs · FRAGORDs · Operational planning workflows'
+  'dtra.expansion':'6-month CLIN → full DTRA mid-year','dtra.workflows':'OPORDs · FRAGORDs · Operational planning workflows','dtra.contracting':''
 };
 
-var BLOCK_DEFAULTS = {
-  'opnav-checkins':[{l:'Week 1',v:'Kickoff brief · account confirmation · baseline workflow walk-through'},{l:'Week 2',v:'Mid-pilot sync with gov lead · issue triage · engagement pulse'},{l:'End of pilot',v:'AAR · outcomes summary · expansion brief to N9'}],
-  'opnav-risks':[{l:'Customer engagement',v:'Limited hands-on during pilot, particularly in the NOC. Identify dedicated NOC POC pre-launch.',c:'red'}],
-  'osw-phases':[{l:'Phase 1',v:'Industry Affairs'},{l:'Phase 2',v:'Mismatch is lead'},{l:'Phase 3',v:'Industrial Base Policy + Front Office'}],
-  'osw-checkins':[{l:'Pre-Phase 1',v:'Account creation · training · Phil/Scott alignment call'},{l:'Phase 1 mid-point',v:'Workflow review · issue log · engagement pulse'},{l:'Phase transition',v:'Phase AAR · brief to next phase team · docs status check'},{l:'End of Phase 3',v:'IBP-wide expansion brief · FY27 ARR target discussion'}],
-  'osw-risks':[{l:'Primary',v:'Documents release date — must be live by Phase 1 start',c:'red'},{l:'Phase 3',v:'IBP leadership currently negative on adopting another digital tool.',c:'red'}],
+var BLOCK_DEFAULTS={
+  'opnav-risks':[{l:'Customer engagement',v:'Limited hands-on during pilot, particularly in the NOC.',c:'red'}],
+  'osw-risks':[{l:'Primary',v:'Documents release date — must be live by Phase 1 start.',c:'red'},{l:'Phase 3',v:'IBP leadership currently negative on adopting another digital tool.',c:'red'}],
   'osw-related':[{l:'SecWar Front Office',v:'Re-engagement opportunity — track status'},{l:'P&R',v:'Re-engagement — add when active'}],
-  'dtra-checkins':[{l:'Pre-launch (July)',v:'Sam / Greg onboarding · account creation · stakeholder brief'},{l:'Month 1 (August)',v:'Kickoff · OPORD workflow walk-through · issue triage'},{l:'Month 2 (September)',v:'Mid-pilot sync · FRAGORD workflow · expansion conversation initiated'},{l:'Month 3 (October)',v:'AAR · CLIN add-on push · full expansion brief to DTRA leadership'}],
-  'dtra-risks':[{l:'Funding',v:'Gov shutdown risk — primary. Contingency plan needed.',c:'red'},{l:'Documents feature',v:'Must be online by start date. Track with product.',c:'red'},{l:'Staffing',v:'CR lead (Sam) and CR support (Greg) not yet confirmed. Finalize by July.',c:'yellow'}]
+  'dtra-risks':[{l:'Funding',v:'Gov shutdown risk — primary. Contingency plan needed.',c:'red'},{l:'Documents feature',v:'Must be online by start date.',c:'red'},{l:'Staffing',v:'CR lead and support not yet confirmed. Finalize by July.',c:'yellow'}]
 };
 
-var SUCCESS_DEFAULTS = {
+var SUCCESS_DEFAULTS={
   'opnav':['Gov hands-on engagement','NOC workflow completed','N9 positive feedback','Expansion brief delivered'],
-  'osw':['Documents feature live by start','Ph1 workflow complete','Ph3 adoption / buy-in','IBP-wide expansion brief delivered'],
   'dtra':['OPORD workflow live','FRAGORD workflow live','6-month CLIN add-on initiated','Full DTRA expansion brief delivered']
 };
 
-var CL_DEFAULTS = [
+var CL_DEFAULTS=[
   'Accounts created and tested on target network',
   'Training session scheduled with key users',
   'Stakeholder alignment brief delivered',
   'Workflow walk-through completed (CR + gov lead)',
-  'Gov POC confirmed for pilot duration',
+  'Gov POC confirmed for phase duration',
   'Success criteria finalized and agreed',
   'Check-in cadence and dates locked',
   'Issues / feedback channel established',
@@ -446,261 +434,332 @@ var CL_DEFAULTS = [
   'All documents / feature dependencies confirmed live'
 ];
 
-function load(k,def){try{var v=localStorage.getItem('ncr2:'+k);return v!==null?JSON.parse(v):def;}catch(e){return def;}}
-function save(k,v){try{localStorage.setItem('ncr2:'+k,JSON.stringify(v));flash();}catch(e){}}
+// OSW Timeline defaults
+var TL_DEFAULTS={
+  phases:[
+    {label:'Phase 1',section:'Industry Affairs',govlead:'TBD',workflows:'Industry Affairs workflows',feedback:''},
+    {label:'Phase 2',section:'Mismatch Lead',govlead:'TBD',workflows:'Mismatch workflows',feedback:''},
+    {label:'Phase 3',section:'Industrial Base Policy & Front Office',govlead:'TBD',workflows:'Industrial Base Policy workflows',feedback:''}
+  ],
+  gates:[
+    {title:'Gate 1 → 2',items:[{text:'All Ph1 workflows completed',poc:'Gov POC: TBD',done:false},{text:'Funding trigger released for Ph2',poc:'Decision authority: TBD',done:false},{text:'Pre-phase 2 checklist complete',poc:'CR lead: Phil',done:false}]},
+    {title:'Gate 2 → 3',items:[{text:'All Ph2 workflows completed',poc:'Gov POC: TBD',done:false},{text:'Funding trigger released for Ph3',poc:'Decision authority: TBD',done:false},{text:'Pre-phase 3 checklist complete',poc:'CR lead: Phil',done:false}]}
+  ],
+  slUpdates:[
+    {after:0,label:'SL Update\nPh1 Kickoff'},
+    {after:1,label:'SL Update\nMid-program'},
+    {after:2,label:'SL Update\nFinal'}
+  ]
+};
 
+var OSW_PH_CL_DEFAULTS={
+  1:CL_DEFAULTS.slice(),
+  2:CL_DEFAULTS.slice(),
+  3:CL_DEFAULTS.slice()
+};
+
+function load(k,def){try{var v=localStorage.getItem('ncr3:'+k);return v!==null?JSON.parse(v):def;}catch(e){return def;}}
+function save(k,v){try{localStorage.setItem('ncr3:'+k,JSON.stringify(v));flash();}catch(e){}}
 function flash(){var d=document.getElementById('savedot');d.classList.add('show');setTimeout(function(){d.classList.remove('show');},1200);}
+function escH(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
 // ── Fields ─────────────────────────────────────────────────────────────────
 function initFields(){
   document.querySelectorAll('[data-key]').forEach(function(el){
-    var k=el.dataset.key;
-    var val=load('field:'+k,DEFAULTS[k]||'');
-    el.textContent=val;
-    syncField(el,val);
-    el.addEventListener('input',function(){
-      var v=el.textContent.trim();
-      save('field:'+k,v);
-      syncField(el,v);
-    });
+    var k=el.dataset.key,val=load('field:'+k,DEFAULTS[k]||'');
+    el.textContent=val;syncField(el,val);
+    el.addEventListener('input',function(){var v=el.textContent.trim();save('field:'+k,v);syncField(el,v);});
   });
 }
-
 function syncField(el,val){
-  var ids=(el.dataset.sync||'').split(',').filter(Boolean);
-  ids.forEach(function(id){
-    var t=document.getElementById(id);
-    if(t)t.textContent=val;
-  });
+  (el.dataset.sync||'').split(',').filter(Boolean).forEach(function(id){var t=document.getElementById(id);if(t)t.textContent=val;});
 }
 
 // ── Blocks ─────────────────────────────────────────────────────────────────
-function renderBlock(containerId,item,idx){
-  var c=document.getElementById(containerId);
-  if(!c)return;
-  var div=document.createElement('div');
-  div.className='phase-block'+(item.c?' '+item.c:'');
-  div.dataset.idx=idx;
-  div.innerHTML='<div class="phase-content"><div class="phase-label-el" contenteditable="true">'+escH(item.l)+'</div><div class="phase-val-el" contenteditable="true">'+escH(item.v)+'</div></div><button class="del-btn" onclick="delBlock(\''+containerId+'\','+idx+')" title="Delete"><i class="ti ti-x"></i></button>';
-  div.querySelector('.phase-label-el').addEventListener('input',function(){saveBlockField(containerId,idx,'l',this.textContent.trim());});
-  div.querySelector('.phase-val-el').addEventListener('input',function(){saveBlockField(containerId,idx,'v',this.textContent.trim());});
+function initBlocks(cid){
+  var c=document.getElementById(cid);if(!c)return;c.innerHTML='';
+  load('blocks:'+cid,BLOCK_DEFAULTS[cid]||[]).forEach(function(item,i){renderBlock(cid,item,i);});
+}
+function renderBlock(cid,item,idx){
+  var c=document.getElementById(cid),div=document.createElement('div');
+  div.className='phase-block'+(item.c?' '+item.c:'');div.dataset.idx=idx;
+  div.innerHTML='<div class="phase-content"><div class="phase-label-el" contenteditable="true">'+escH(item.l)+'</div><div class="phase-val-el" contenteditable="true">'+escH(item.v)+'</div></div><button class="del-btn" onclick="delBlock(\''+cid+'\','+idx+')" title="Delete"><i class="ti ti-x"></i></button>';
+  div.querySelector('.phase-label-el').addEventListener('input',function(){saveBlockField(cid,idx,'l',this.textContent.trim());});
+  div.querySelector('.phase-val-el').addEventListener('input',function(){saveBlockField(cid,idx,'v',this.textContent.trim());});
   c.appendChild(div);
 }
-
-function initBlocks(containerId){
-  var c=document.getElementById(containerId);
-  if(!c)return;
-  c.innerHTML='';
-  var items=load('blocks:'+containerId,BLOCK_DEFAULTS[containerId]||[]);
-  items.forEach(function(item,i){renderBlock(containerId,item,i);});
-}
-
-function addBlock(containerId,defL,defV,defC){
-  var items=load('blocks:'+containerId,BLOCK_DEFAULTS[containerId]||[]);
+function addBlock(cid,defL,defV,defC){
+  var items=load('blocks:'+cid,BLOCK_DEFAULTS[cid]||[]);
   items.push({l:defL||'Label',v:defV||'Description',c:defC||''});
-  save('blocks:'+containerId,items);
-  var c=document.getElementById(containerId);c.innerHTML='';
-  items.forEach(function(item,i){renderBlock(containerId,item,i);});
+  save('blocks:'+cid,items);initBlocks(cid);
+}
+function delBlock(cid,idx){
+  var items=load('blocks:'+cid,BLOCK_DEFAULTS[cid]||[]);items.splice(idx,1);save('blocks:'+cid,items);initBlocks(cid);
+}
+function saveBlockField(cid,idx,field,val){
+  var items=load('blocks:'+cid,BLOCK_DEFAULTS[cid]||[]);if(items[idx])items[idx][field]=val;save('blocks:'+cid,items);
 }
 
-function delBlock(containerId,idx){
-  var items=load('blocks:'+containerId,BLOCK_DEFAULTS[containerId]||[]);
-  items.splice(idx,1);
-  save('blocks:'+containerId,items);
-  var c=document.getElementById(containerId);c.innerHTML='';
-  items.forEach(function(item,i){renderBlock(containerId,item,i);});
-}
-
-function saveBlockField(containerId,idx,field,val){
-  var items=load('blocks:'+containerId,BLOCK_DEFAULTS[containerId]||[]);
-  if(items[idx])items[idx][field]=val;
-  save('blocks:'+containerId,items);
-}
-
-// ── Checklist ──────────────────────────────────────────────────────────────
+// ── Checklist (OPNAV / DTRA) ───────────────────────────────────────────────
 function initChecklist(pid){
-  var ul=document.getElementById(pid+'-cl');
-  if(!ul)return;
-  var items=load('cl2:'+pid,CL_DEFAULTS.map(function(t){return{t:t,c:false};}));
-  ul.innerHTML='';
-  items.forEach(function(item,i){renderCheckItem(pid,item,i);});
+  var ul=document.getElementById(pid+'-cl');if(!ul)return;
+  var items=load('cl3:'+pid,CL_DEFAULTS.map(function(t){return{t:t,c:false};}));
+  ul.innerHTML='';items.forEach(function(item,i){renderCLItem(pid,item,i,ul);});
 }
-
-function renderCheckItem(pid,item,i){
-  var ul=document.getElementById(pid+'-cl');
-  var li=document.createElement('li');
-  li.className=item.c?'done':'';
-  li.dataset.idx=i;
-  var chk=document.createElement('input');
-  chk.type='checkbox';chk.checked=item.c;chk.id=pid+'-ci-'+i;
-  chk.addEventListener('change',function(){saveCheckState(pid,i,this.checked);li.classList.toggle('done',this.checked);});
-  var lbl=document.createElement('label');
-  lbl.setAttribute('for',pid+'-ci-'+i);
-  lbl.setAttribute('contenteditable','true');
-  lbl.textContent=item.t;
-  lbl.addEventListener('input',function(){saveCheckText(pid,i,this.textContent.trim());});
-  var del=document.createElement('button');
-  del.className='del-btn';del.title='Delete';del.innerHTML='<i class="ti ti-x"></i>';
-  del.addEventListener('click',function(){delCheck(pid,i);});
-  li.appendChild(chk);li.appendChild(lbl);li.appendChild(del);
-  ul.appendChild(li);
+function renderCLItem(pid,item,i,ul){
+  var li=document.createElement('li');li.className=item.c?'done':'';
+  var chk=document.createElement('input');chk.type='checkbox';chk.checked=item.c;chk.id=pid+'-ci-'+i;
+  chk.addEventListener('change',function(){saveCLState(pid,i,this.checked);li.classList.toggle('done',this.checked);});
+  var lbl=document.createElement('label');lbl.setAttribute('for',pid+'-ci-'+i);lbl.setAttribute('contenteditable','true');lbl.textContent=item.t;
+  lbl.addEventListener('input',function(){saveCLText(pid,i,this.textContent.trim());});
+  var del=document.createElement('button');del.className='del-btn';del.innerHTML='<i class="ti ti-x"></i>';
+  del.addEventListener('click',function(){delCL(pid,i);});
+  li.appendChild(chk);li.appendChild(lbl);li.appendChild(del);ul.appendChild(li);
 }
-
 function addCheck(pid){
-  var items=load('cl2:'+pid,CL_DEFAULTS.map(function(t){return{t:t,c:false};}));
-  items.push({t:'New checklist item',c:false});
-  save('cl2:'+pid,items);
-  initChecklist(pid);
+  var items=load('cl3:'+pid,CL_DEFAULTS.map(function(t){return{t:t,c:false};}));
+  items.push({t:'New item',c:false});save('cl3:'+pid,items);initChecklist(pid);
+}
+function delCL(pid,idx){
+  var items=load('cl3:'+pid,CL_DEFAULTS.map(function(t){return{t:t,c:false};}));
+  items.splice(idx,1);save('cl3:'+pid,items);initChecklist(pid);
+}
+function saveCLState(pid,i,val){
+  var items=load('cl3:'+pid,CL_DEFAULTS.map(function(t){return{t:t,c:false};}));if(items[i])items[i].c=val;save('cl3:'+pid,items);
+}
+function saveCLText(pid,i,val){
+  var items=load('cl3:'+pid,CL_DEFAULTS.map(function(t){return{t:t,c:false};}));if(items[i])items[i].t=val;save('cl3:'+pid,items);
 }
 
-function delCheck(pid,idx){
-  var items=load('cl2:'+pid,CL_DEFAULTS.map(function(t){return{t:t,c:false};}));
-  items.splice(idx,1);
-  save('cl2:'+pid,items);
-  initChecklist(pid);
+// ── OSW per-phase checklists ───────────────────────────────────────────────
+var activePhaseTab=1;
+function showPhaseTab(n){
+  activePhaseTab=n;
+  document.querySelectorAll('.phase-cl-tab').forEach(function(b,i){b.classList.toggle('active',i===n-1);});
+  document.querySelectorAll('.phase-cl-pane').forEach(function(p,i){p.classList.toggle('active',i===n-1);});
 }
-
-function saveCheckState(pid,i,val){
-  var items=load('cl2:'+pid,CL_DEFAULTS.map(function(t){return{t:t,c:false};}));
-  if(items[i])items[i].c=val;
-  save('cl2:'+pid,items);
+function initOswChecklist(ph){
+  var ul=document.getElementById('osw-cl-'+ph);if(!ul)return;
+  var def=OSW_PH_CL_DEFAULTS[ph].map(function(t){return{t:t,c:false};});
+  var items=load('osw-cl3-ph'+ph,def);
+  ul.innerHTML='';items.forEach(function(item,i){renderOswCLItem(ph,item,i,ul);});
 }
-
-function saveCheckText(pid,i,val){
-  var items=load('cl2:'+pid,CL_DEFAULTS.map(function(t){return{t:t,c:false};}));
-  if(items[i])items[i].t=val;
-  save('cl2:'+pid,items);
+function renderOswCLItem(ph,item,i,ul){
+  var li=document.createElement('li');li.className=item.c?'done':'';
+  var chk=document.createElement('input');chk.type='checkbox';chk.checked=item.c;chk.id='osw-ph'+ph+'-ci-'+i;
+  chk.addEventListener('change',function(){saveOswCLState(ph,i,this.checked);li.classList.toggle('done',this.checked);});
+  var lbl=document.createElement('label');lbl.setAttribute('for','osw-ph'+ph+'-ci-'+i);lbl.setAttribute('contenteditable','true');lbl.textContent=item.t;
+  lbl.addEventListener('input',function(){saveOswCLText(ph,i,this.textContent.trim());});
+  var del=document.createElement('button');del.className='del-btn';del.innerHTML='<i class="ti ti-x"></i>';
+  del.addEventListener('click',function(){delOswCL(ph,i);});
+  li.appendChild(chk);li.appendChild(lbl);li.appendChild(del);ul.appendChild(li);
+}
+function addOswCheck(){
+  var ph=activePhaseTab;
+  var def=OSW_PH_CL_DEFAULTS[ph].map(function(t){return{t:t,c:false};});
+  var items=load('osw-cl3-ph'+ph,def);items.push({t:'New item',c:false});
+  save('osw-cl3-ph'+ph,items);initOswChecklist(ph);
+}
+function delOswCL(ph,idx){
+  var def=OSW_PH_CL_DEFAULTS[ph].map(function(t){return{t:t,c:false};});
+  var items=load('osw-cl3-ph'+ph,def);items.splice(idx,1);save('osw-cl3-ph'+ph,items);initOswChecklist(ph);
+}
+function saveOswCLState(ph,i,val){
+  var def=OSW_PH_CL_DEFAULTS[ph].map(function(t){return{t:t,c:false};});
+  var items=load('osw-cl3-ph'+ph,def);if(items[i])items[i].c=val;save('osw-cl3-ph'+ph,items);
+}
+function saveOswCLText(ph,i,val){
+  var def=OSW_PH_CL_DEFAULTS[ph].map(function(t){return{t:t,c:false};});
+  var items=load('osw-cl3-ph'+ph,def);if(items[i])items[i].t=val;save('osw-cl3-ph'+ph,items);
 }
 
 // ── Success tags ───────────────────────────────────────────────────────────
 function initSuccess(pid){
-  var c=document.getElementById(pid+'-success');
-  if(!c)return;
-  var items=load('success:'+pid,SUCCESS_DEFAULTS[pid]||[]);
-  c.innerHTML='';
+  var c=document.getElementById(pid+'-success');if(!c)return;
+  var items=load('success3:'+pid,SUCCESS_DEFAULTS[pid]||[]);c.innerHTML='';
   items.forEach(function(text,i){
-    var span=document.createElement('span');
-    span.className='stag';
-    var lbl=document.createElement('span');
-    lbl.setAttribute('contenteditable','true');
-    lbl.textContent=text;
+    var span=document.createElement('span');span.className='stag';
+    var lbl=document.createElement('span');lbl.setAttribute('contenteditable','true');lbl.textContent=text;
     lbl.addEventListener('input',function(){saveSuccessText(pid,i,this.textContent.trim());});
-    var del=document.createElement('button');
-    del.className='del-btn';del.innerHTML='<i class="ti ti-x"></i>';
+    var del=document.createElement('button');del.className='del-btn';del.innerHTML='<i class="ti ti-x"></i>';
     del.addEventListener('click',function(){delSuccess(pid,i);});
-    span.appendChild(lbl);span.appendChild(del);
-    c.appendChild(span);
+    span.appendChild(lbl);span.appendChild(del);c.appendChild(span);
+  });
+}
+function addSuccess(pid){var items=load('success3:'+pid,SUCCESS_DEFAULTS[pid]||[]);items.push('New criterion');save('success3:'+pid,items);initSuccess(pid);}
+function delSuccess(pid,idx){var items=load('success3:'+pid,SUCCESS_DEFAULTS[pid]||[]);items.splice(idx,1);save('success3:'+pid,items);initSuccess(pid);}
+function saveSuccessText(pid,i,val){var items=load('success3:'+pid,SUCCESS_DEFAULTS[pid]||[]);if(items[i]!==undefined)items[i]=val;save('success3:'+pid,items);}
+
+// ── Links ──────────────────────────────────────────────────────────────────
+function initLinks(cid){
+  var c=document.getElementById(cid);if(!c)return;
+  var def=cid==='opnav-links'?[{label:'Pilot execution & AAR',url:'https://app.notion.com/p/onebrief/N9I-Pilot-Execution-and-AAR-097e3bddbaa883acb4ca014e0dcbe9f4'}]:[];
+  var items=load('links3:'+cid,def);c.innerHTML='';
+  items.forEach(function(item,i){renderLink(cid,item,i);});
+}
+function renderLink(cid,item,i){
+  var c=document.getElementById(cid),div=document.createElement('div');div.className='link-item';
+  var icon=document.createElement('i');icon.className='ti ti-file-text';icon.style.cssText='color:var(--text2);flex-shrink:0;font-size:14px;margin-top:2px';
+  var inner=document.createElement('div');inner.style.flex='1';
+  var lbl=document.createElement('div');lbl.className='link-item-label';lbl.setAttribute('contenteditable','true');lbl.textContent=item.label;
+  lbl.addEventListener('input',function(){saveLinkField(cid,i,'label',this.textContent.trim());});
+  var a=document.createElement('a');a.setAttribute('contenteditable','true');a.textContent=item.url;
+  a.addEventListener('input',function(){saveLinkField(cid,i,'url',this.textContent.trim());});
+  if(item.url.startsWith('http')){a.href=item.url;}a.target='_blank';
+  inner.appendChild(lbl);inner.appendChild(a);
+  var del=document.createElement('button');del.className='del-btn';del.innerHTML='<i class="ti ti-x"></i>';
+  del.addEventListener('click',function(){delLink(cid,i);});
+  div.appendChild(icon);div.appendChild(inner);div.appendChild(del);c.appendChild(div);
+}
+function addLink(cid){var items=load('links3:'+cid,[]);items.push({label:'Link label',url:'https://'});save('links3:'+cid,items);initLinks(cid);}
+function delLink(cid,idx){var items=load('links3:'+cid,[]);items.splice(idx,1);save('links3:'+cid,items);initLinks(cid);}
+function saveLinkField(cid,i,field,val){var items=load('links3:'+cid,[]);if(items[i])items[i][field]=val;save('links3:'+cid,items);}
+
+// ── OSW Timeline ───────────────────────────────────────────────────────────
+function getTLData(){return load('osw-tl',TL_DEFAULTS);}
+function saveTL(data){save('osw-tl',data);}
+
+function buildTimeline(){
+  var data=getTLData();
+  var rail=document.getElementById('osw-tl-rail');
+  rail.innerHTML='';
+
+  // Helper: editable span
+  function edSpan(cls,text,onInput){
+    var el=document.createElement('div');el.className=cls;el.setAttribute('contenteditable','true');el.textContent=text;
+    el.addEventListener('input',function(){onInput(this.textContent.trim());});
+    return el;
+  }
+
+  data.phases.forEach(function(phase,pi){
+    // SL diamond before this phase if configured
+    data.slUpdates.forEach(function(sl){
+      if(sl.after===pi&&pi===0){
+        rail.appendChild(makeDiamond(sl,data,sl.after===0?'before':pi));
+      }
+    });
+
+    // Phase column
+    var col=document.createElement('div');col.className='tl-col';
+    var dot=document.createElement('div');dot.className='tl-dot';
+    var box=document.createElement('div');box.className='tl-phase';
+
+    var phLbl=document.createElement('div');phLbl.className='tl-phase-label';phLbl.textContent=phase.label;
+    box.appendChild(phLbl);
+
+    function tlField(label,key,val){
+      var wrap=document.createElement('div');wrap.className='tl-field';
+      var fl=document.createElement('div');fl.className='tl-field-label';fl.textContent=label;
+      var fv=edSpan('tl-field-val',val,function(v){
+        var d=getTLData();d.phases[pi][key]=v;saveTL(d);
+      });
+      wrap.appendChild(fl);wrap.appendChild(fv);box.appendChild(wrap);
+    }
+    tlField('Section',    'section',  phase.section);
+    tlField('Gov lead',   'govlead',  phase.govlead);
+    tlField('Workflows',  'workflows',phase.workflows);
+    tlField('Product feedback','feedback',phase.feedback);
+
+    col.appendChild(dot);col.appendChild(box);
+    rail.appendChild(col);
+
+    // SL diamond after each phase
+    data.slUpdates.forEach(function(sl){
+      if(sl.after===pi+1){rail.appendChild(makeDiamond(sl,data,pi));}
+    });
+
+    // Gate after each phase except last
+    if(pi<data.phases.length-1){
+      var gate=data.gates[pi];
+      if(gate) rail.appendChild(makeGate(gate,pi,data));
+    }
   });
 }
 
-function addSuccess(pid){
-  var items=load('success:'+pid,SUCCESS_DEFAULTS[pid]||[]);
-  items.push('New criterion');
-  save('success:'+pid,items);
-  initSuccess(pid);
+function makeDiamond(sl,data,pi){
+  var wrap=document.createElement('div');wrap.className='tl-diamond-wrap';
+  var dia=document.createElement('div');dia.className='tl-diamond';dia.title='Senior leader update';
+  var lbl=document.createElement('div');lbl.className='tl-diamond-label';lbl.setAttribute('contenteditable','true');lbl.textContent=sl.label;
+  lbl.addEventListener('input',function(){
+    var d=getTLData();
+    d.slUpdates.forEach(function(s){if(s.after===sl.after)s.label=lbl.textContent.trim();});
+    saveTL(d);
+  });
+  wrap.appendChild(dia);wrap.appendChild(lbl);return wrap;
 }
 
-function delSuccess(pid,idx){
-  var items=load('success:'+pid,SUCCESS_DEFAULTS[pid]||[]);
-  items.splice(idx,1);
-  save('success:'+pid,items);
-  initSuccess(pid);
-}
+function makeGate(gate,gi,data){
+  var wrap=document.createElement('div');wrap.className='tl-gate-wrap';
+  var icon=document.createElement('div');icon.className='tl-gate-icon';icon.innerHTML='<i class="ti ti-git-merge"></i>';
+  var box=document.createElement('div');box.className='tl-gate-box';
+  var title=document.createElement('div');title.className='tl-gate-title';title.textContent=gate.title;
+  var cl=document.createElement('ul');cl.className='tl-gate-cl';
 
-function saveSuccessText(pid,i,val){
-  var items=load('success:'+pid,SUCCESS_DEFAULTS[pid]||[]);
-  if(items[i]!==undefined)items[i]=val;
-  save('success:'+pid,items);
-}
+  function renderGateItems(){
+    cl.innerHTML='';
+    var d=getTLData();
+    (d.gates[gi]?d.gates[gi].items:[]).forEach(function(item,ii){
+      var li=document.createElement('li');
+      var row=document.createElement('div');row.className='gate-row';
+      var chk=document.createElement('input');chk.type='checkbox';chk.checked=item.done;
+      chk.addEventListener('change',function(){
+        var d=getTLData();if(d.gates[gi]&&d.gates[gi].items[ii])d.gates[gi].items[ii].done=this.checked;saveTL(d);
+      });
+      var txt=document.createElement('span');txt.className='gate-text';txt.setAttribute('contenteditable','true');txt.textContent=item.text;
+      txt.addEventListener('input',function(){
+        var d=getTLData();if(d.gates[gi]&&d.gates[gi].items[ii])d.gates[gi].items[ii].text=this.textContent.trim();saveTL(d);
+      });
+      var del=document.createElement('button');del.className='del-btn';del.innerHTML='<i class="ti ti-x"></i>';
+      del.addEventListener('click',function(){
+        var d=getTLData();if(d.gates[gi])d.gates[gi].items.splice(ii,1);saveTL(d);renderGateItems();
+      });
+      row.appendChild(chk);row.appendChild(txt);row.appendChild(del);
+      var poc=document.createElement('div');poc.className='gate-poc';poc.setAttribute('contenteditable','true');poc.textContent=item.poc;
+      poc.addEventListener('input',function(){
+        var d=getTLData();if(d.gates[gi]&&d.gates[gi].items[ii])d.gates[gi].items[ii].poc=this.textContent.trim();saveTL(d);
+      });
+      li.appendChild(row);li.appendChild(poc);cl.appendChild(li);
+    });
+  }
+  renderGateItems();
 
-// ── Links ──────────────────────────────────────────────────────────────────
-function initLinks(containerId){
-  var c=document.getElementById(containerId);
-  if(!c)return;
-  var defaults=containerId==='opnav-links'?[{label:'Pilot execution & AAR',url:'https://app.notion.com/p/onebrief/N9I-Pilot-Execution-and-AAR-097e3bddbaa883acb4ca014e0dcbe9f4'}]:[];
-  var items=load('links:'+containerId,defaults);
-  c.innerHTML='';
-  items.forEach(function(item,i){renderLink(containerId,item,i);});
-}
+  var addBtn=document.createElement('button');addBtn.className='tl-gate-add';addBtn.innerHTML='<i class="ti ti-plus"></i> Add item';
+  addBtn.addEventListener('click',function(){
+    var d=getTLData();if(d.gates[gi])d.gates[gi].items.push({text:'New gate item',poc:'Decision authority: TBD',done:false});
+    saveTL(d);renderGateItems();
+  });
 
-function renderLink(containerId,item,i){
-  var c=document.getElementById(containerId);
-  var div=document.createElement('div');
-  div.className='link-item';
-  var icon=document.createElement('i');
-  icon.className='ti ti-file-text';icon.style.cssText='color:var(--text2);flex-shrink:0;font-size:14px;margin-top:2px';
-  var inner=document.createElement('div');inner.style.flex='1';
-  var lbl=document.createElement('div');lbl.className='link-item-label';lbl.setAttribute('contenteditable','true');lbl.textContent=item.label;
-  lbl.addEventListener('input',function(){saveLinkField(containerId,i,'label',this.textContent.trim());});
-  var a=document.createElement('a');a.setAttribute('contenteditable','true');a.textContent=item.url;
-  a.addEventListener('input',function(){saveLinkField(containerId,i,'url',this.textContent.trim());});
-  a.addEventListener('blur',function(){if(this.textContent.startsWith('http'))this.href=this.textContent.trim();});
-  if(item.url.startsWith('http'))a.href=item.url;a.target='_blank';
-  inner.appendChild(lbl);inner.appendChild(a);
-  var del=document.createElement('button');
-  del.className='del-btn';del.innerHTML='<i class="ti ti-x"></i>';
-  del.addEventListener('click',function(){delLink(containerId,i);});
-  div.appendChild(icon);div.appendChild(inner);div.appendChild(del);
-  c.appendChild(div);
-}
-
-function addLink(containerId){
-  var items=load('links:'+containerId,[]);
-  items.push({label:'Link label',url:'https://'});
-  save('links:'+containerId,items);
-  initLinks(containerId);
-}
-
-function delLink(containerId,idx){
-  var items=load('links:'+containerId,[]);
-  items.splice(idx,1);
-  save('links:'+containerId,items);
-  initLinks(containerId);
-}
-
-function saveLinkField(containerId,i,field,val){
-  var items=load('links:'+containerId,[]);
-  if(items[i])items[i][field]=val;
-  save('links:'+containerId,items);
+  box.appendChild(title);box.appendChild(cl);box.appendChild(addBtn);
+  wrap.appendChild(icon);wrap.appendChild(box);return wrap;
 }
 
 // ── Calendar ───────────────────────────────────────────────────────────────
 var CAL_MONTHS=[{name:'May 2025',y:2025,m:4,days:31},{name:'Jun 2025',y:2025,m:5,days:30},{name:'Jul 2025',y:2025,m:6,days:31},{name:'Aug 2025',y:2025,m:7,days:31}];
 var DLABELS=['S','M','T','W','T','F','S'];
-
 function pilotClass(y,m,d){
   var dt=new Date(y,m,d);
   var inOp=dt>=new Date(2025,4,18)&&dt<=new Date(2025,5,12);
   var inOsw=dt>=new Date(2025,6,1);
   var inDtra=dt>=new Date(2025,7,1)&&dt<=new Date(2025,9,31);
-  if(inOp&&inOsw) return 'opnav-osw';
-  if(inOsw&&inDtra) return 'osw-dtra';
-  if(inOp) return 'opnav';
-  if(inOsw) return 'osw';
-  if(inDtra) return 'dtra';
+  if(inOp&&inOsw)return 'opnav-osw';
+  if(inOsw&&inDtra)return 'osw-dtra';
+  if(inOp)return 'opnav';
+  if(inOsw)return 'osw';
+  if(inDtra)return 'dtra';
   return '';
 }
-
-function pilotFromClass(cls){
-  if(cls==='opnav-osw') return 'opnav';
-  if(cls==='osw-dtra') return 'osw';
-  return cls;
-}
-
+function pilotFromClass(cls){if(cls==='opnav-osw')return 'opnav';if(cls==='osw-dtra')return 'osw';return cls;}
 function buildCalendar(){
-  var outer=document.getElementById('cal-outer');
-  outer.innerHTML='';
+  var outer=document.getElementById('cal-outer');outer.innerHTML='';
   CAL_MONTHS.forEach(function(mo){
     var div=document.createElement('div');div.className='cal-month';
     var html='<div class="cal-month-title">'+mo.name+'</div>';
     html+='<div class="cal-week-row">'+DLABELS.map(function(l){return'<div class="cal-dlabel">'+l+'</div>';}).join('')+'</div>';
-    var first=new Date(mo.y,mo.m,1).getDay();
-    var cells=[];
-    for(var i=0;i<first;i++) cells.push('<div class="cal-day"></div>');
+    var first=new Date(mo.y,mo.m,1).getDay(),cells=[];
+    for(var i=0;i<first;i++)cells.push('<div class="cal-day"></div>');
     for(var d=1;d<=mo.days;d++){
       var pc=pilotClass(mo.y,mo.m,d);
-      if(pc){var pk=pilotFromClass(pc);cells.push('<div class="cal-day '+pc+'" onclick="showPop(\''+pk+'\')" title="'+d+'">'+d+'</div>');}
-      else cells.push('<div class="cal-day">'+d+'</div>');
+      cells.push(pc?'<div class="cal-day '+pc+'" onclick="showPop(\''+pilotFromClass(pc)+'\')" title="'+d+'">'+d+'</div>':'<div class="cal-day">'+d+'</div>');
       if(cells.length===7){html+='<div class="cal-week-row">'+cells.join('')+'</div>';cells=[];}
     }
     if(cells.length)html+='<div class="cal-week-row">'+cells.join('')+'</div>';
@@ -709,31 +768,24 @@ function buildCalendar(){
 }
 
 // ── Popup ──────────────────────────────────────────────────────────────────
-var curPopPilot='';
-var POP_DATA={
-  opnav:{name:'OPNAV N9I'},
-  osw:{name:'OSW IBP'},
-  dtra:{name:'DTRA J3/5/8'}
-};
-
+var curPop='';
+var POP_KEYS=['arr','dates','networks','govlead','crlead','crsupport'];
+var POP_LABELS=['ARR','Dates','Networks','Gov lead','CR lead','CR support'];
 function showPop(pilot){
-  curPopPilot=pilot;
-  var keys=['arr','dates','networks','govlead','crlead','crsupport'];
-  var labels=['ARR','Dates','Networks','Gov lead','CR lead','CR support'];
+  curPop=pilot;
   var html='';
-  keys.forEach(function(k,i){
+  POP_KEYS.forEach(function(k,i){
     var v=load('field:'+pilot+'.'+k,DEFAULTS[pilot+'.'+k]||'—');
-    html+='<div class="ef"><div class="ef-label">'+labels[i]+'</div><div class="ef-val">'+escH(v)+'</div></div>';
+    html+='<div class="ef"><div class="ef-label">'+POP_LABELS[i]+'</div><div class="ef-val">'+escH(v)+'</div></div>';
   });
-  document.getElementById('pop-title').textContent=POP_DATA[pilot].name;
+  document.getElementById('pop-title').textContent={opnav:'OPNAV N9I',osw:'OSW IBP',dtra:'DTRA J3/5/8'}[pilot]||pilot;
   document.getElementById('pop-body').innerHTML=html;
   document.getElementById('pop-ov').classList.add('open');
 }
-
 function closePop(){document.getElementById('pop-ov').classList.remove('open');}
-function gotoTab(){closePop();switchTab(curPopPilot);}
+function gotoTab(){closePop();switchTab(curPop);}
 
-// ── Tab switch ─────────────────────────────────────────────────────────────
+// ── Tabs ───────────────────────────────────────────────────────────────────
 function switchTab(id){
   document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
   document.querySelectorAll('.tab-pane').forEach(function(p){p.classList.remove('active');});
@@ -742,14 +794,14 @@ function switchTab(id){
   document.querySelectorAll('.tab-btn')[map[id]].classList.add('active');
 }
 
-function escH(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
 // ── Init ───────────────────────────────────────────────────────────────────
 initFields();
-['opnav-checkins','opnav-risks','osw-phases','osw-checkins','osw-risks','osw-related','dtra-checkins','dtra-risks'].forEach(initBlocks);
-['opnav','osw','dtra'].forEach(function(p){initChecklist(p);initSuccess(p);});
+['opnav-risks','osw-risks','osw-related','dtra-risks'].forEach(initBlocks);
+['opnav','dtra'].forEach(function(p){initChecklist(p);initSuccess(p);});
+[1,2,3].forEach(initOswChecklist);
 ['opnav-links','osw-links','dtra-links'].forEach(initLinks);
 buildCalendar();
+buildTimeline();
 </script>
 </body>
 </html>
